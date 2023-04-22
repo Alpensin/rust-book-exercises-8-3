@@ -2,16 +2,18 @@
 // a company. For example, “Add Sally to Engineering” or “Add Amir to Sales.” Then let the user retrieve a list of
 // all people in a department or all people in the company by department, sorted alphabetically.
 
-use std::{io, collections::HashMap};
+use std::{collections::HashMap, io};
 
 fn add_users(deps: &mut HashMap<String, Vec<String>>) {
     println!("Module third task");
     loop {
-        println!("Enter data. Expected \"Add <employee> to <department>\". Command <Stop> to finish");
+        println!(
+            "Enter data. Expected \"Add <employee> to <department>\". Command <Stop> to finish"
+        );
         let mut input_data = String::new();
         io::stdin()
-        .read_line(&mut input_data)
-        .expect("Enter new employee. Expect \"Add <employee> to <department>\" ");
+            .read_line(&mut input_data)
+            .expect("Enter new employee. Expect \"Add <employee> to <department>\" ");
         if input_data.trim() == "Stop" {
             break;
         }
@@ -27,7 +29,7 @@ fn add_users(deps: &mut HashMap<String, Vec<String>>) {
             None => {
                 println!("You entered wrong employee. Expected \"Add <employee> to <department>\"");
                 continue;
-                },
+            }
         };
         let employee = employee.unwrap();
         let employee = employee.trim_start_matches("Add ");
@@ -37,9 +39,11 @@ fn add_users(deps: &mut HashMap<String, Vec<String>>) {
         match department {
             Some(_) => (),
             None => {
-                println!("You entered wrong department. Expected \"Add <employee> to <department>\"");
+                println!(
+                    "You entered wrong department. Expected \"Add <employee> to <department>\""
+                );
                 continue;
-                },
+            }
         };
         let department = department.unwrap();
 
@@ -48,18 +52,19 @@ fn add_users(deps: &mut HashMap<String, Vec<String>>) {
         cur_arr.push(String::from(employee));
     }
 }
-fn get_users(deps: &mut HashMap<String, Vec<String>>) {
+fn fill_new_users(deps: &mut HashMap<String, Vec<String>>) {
     loop {
-        println!("Enter data. Expected: list <department name>(Optional). Command <Stop> to finish");
+        println!(
+            "Enter data. Expected: list <department name>(Optional). Command <Stop> to finish"
+        );
         let mut input_data = String::new();
         io::stdin()
-        .read_line(&mut input_data)
-        .expect("Enter command list or list <department");
+            .read_line(&mut input_data)
+            .expect("Enter command list or list <department");
         if input_data.trim() == "Stop" {
             break;
         }
         let splitted_data: Vec<&str> = input_data.trim().split(" ").collect();
-
 
         match splitted_data.len() {
             1 => {
@@ -75,7 +80,7 @@ fn get_users(deps: &mut HashMap<String, Vec<String>>) {
                 for employee in all_employees {
                     println!("{employee}");
                 }
-            },
+            }
             2 => {
                 let command = splitted_data[0];
                 let dep = splitted_data[1];
@@ -91,10 +96,10 @@ fn get_users(deps: &mut HashMap<String, Vec<String>>) {
                         for emp in cur_employees {
                             println!("{emp}");
                         }
-                    },
+                    }
                     None => println!("No employees found for this department"),
                 }
-                }
+            }
             _ => {
                 println!("You entered wrong data. Expected: list <department name>(Optional)");
                 continue;
@@ -104,5 +109,5 @@ fn get_users(deps: &mut HashMap<String, Vec<String>>) {
 }
 pub fn manage_employees(deps: &mut HashMap<String, Vec<String>>) {
     add_users(deps);
-    get_users(deps);
+    fill_new_users(deps);
 }

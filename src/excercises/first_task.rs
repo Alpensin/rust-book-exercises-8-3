@@ -26,4 +26,3 @@ pub fn find_most_often(ints: &Vec<i32>) -> i32 {
     }
     return key_name;
 }
-
