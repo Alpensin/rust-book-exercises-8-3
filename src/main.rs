@@ -29,10 +29,10 @@ fn run_second_task() {
 
 fn run_third_task() {
     println!("Third task start");
-    let mut deps = HashMap::new();
+    let mut deps: HashMap<String, Vec<String>>= HashMap::new();
     deps.insert(String::from("Sales"), vec![]);
     deps.insert(String::from("Engineering"), vec![]);
-    excercises::third_task::add_users();
+    excercises::third_task::manage_employees(&mut deps);
     println!("Third task finish");
 
 }
