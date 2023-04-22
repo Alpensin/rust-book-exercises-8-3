@@ -17,12 +17,10 @@ fn run_first_task() {
 
 fn run_second_task() {
     println!("Second task start");
-    let data = "first".to_string();
-    let res = excercises::second_task::pig_latin(&data);
-    println!("Pig word {res}");
-    let data = "apple".to_string();
-    let res = excercises::second_task::pig_latin(&data);
-    println!("Pig word {res}");
+    for input_word in ["first", "apple"] {
+        let res = excercises::second_task::pig_latin(&input_word.to_string());
+        println!("Pig word {res}");
+    }
     println!("Second task finish");
 
 }
