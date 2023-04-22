@@ -5,7 +5,13 @@ use std::collections::HashMap;
 
 pub fn find_median(ints: &mut Vec<i32>) -> i32 {
     ints.sort();
-    return ints[ints.len() / 2];
+    let n = ints.len();
+    if n % 2 == 0 {
+        let mid = n / 2;
+        return (ints[mid - 1] + ints[mid]) / 2;
+    } else {
+        return ints[n / 2];
+    }
 }
 
 pub fn find_most_often(ints: &Vec<i32>) -> i32 {
