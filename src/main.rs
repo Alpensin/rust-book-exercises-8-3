@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 mod excercises;
 
 fn run_first_task() {
@@ -27,6 +29,9 @@ fn run_second_task() {
 
 fn run_third_task() {
     println!("Third task start");
+    let mut deps = HashMap::new();
+    deps.insert(String::from("Sales"), vec![]);
+    deps.insert(String::from("Engineering"), vec![]);
     excercises::third_task::add_users();
     println!("Third task finish");
 
