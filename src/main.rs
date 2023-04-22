@@ -1,4 +1,5 @@
 use std::collections::HashMap;
+use std::collections::HashSet;
 
 mod excercises;
 
@@ -18,9 +19,10 @@ fn run_first_task() {
 }
 
 fn run_second_task() {
+    let vowels: HashSet<char> = HashSet::from_iter("aeiouAEIOU".chars());
     println!("Second task start");
     for input_word in ["first", "apple"] {
-        let res = excercises::second_task::pig_latin(&input_word.to_string());
+        let res = excercises::second_task::pig_latin(&input_word, &vowels);
         println!("Pig word {res}");
     }
     println!("Second task finish");

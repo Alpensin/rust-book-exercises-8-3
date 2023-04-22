@@ -5,12 +5,12 @@ use std::collections::HashMap;
 
 pub fn find_median(ints: &mut Vec<i32>) -> i32 {
     ints.sort();
-    let n = ints.len();
-    if n % 2 == 0 {
-        let mid = n / 2;
+    let ints_len = ints.len();
+    if ints_len % 2 == 0 {
+        let mid = ints_len / 2;
         return (ints[mid - 1] + ints[mid]) / 2;
     } else {
-        return ints[n / 2];
+        return ints[ints_len / 2];
     }
 }
 
